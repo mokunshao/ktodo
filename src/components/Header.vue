@@ -1,5 +1,5 @@
 <template>
-  <div class="header">ktodo</div>
+  <h1 class="header">ktodo</h1>
 </template>
 
 <script>
@@ -14,8 +14,7 @@ export default {
 <style scoped lang="scss">
 .header {
   margin: 30px;
-  font-size: 40px;
-  font-weight: bolder;
   text-align: center;
+  color: white;
 }
 </style>
