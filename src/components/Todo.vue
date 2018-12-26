@@ -39,12 +39,14 @@ export default {
   },
   methods: {
     addTodo(e) {
-      this.todos.unshift({
-        id: id++,
-        content: e.target.value.trim(),
-        completed: false
-      });
-      e.target.value = null;
+      if (e.target.value) {
+        this.todos.unshift({
+          id: id++,
+          content: e.target.value.trim(),
+          completed: false
+        });
+        e.target.value = null;
+      }
     },
     deleteTodo(id) {
       this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1);
