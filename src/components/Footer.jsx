@@ -7,7 +7,7 @@ export default {
   render() {
     return (
       <div id="footer">
-        <span>written by {this.author}</span>
+        <span>Written by {this.author}</span>
       </div>
     );
   }
