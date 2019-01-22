@@ -31,7 +31,8 @@
 <script>
 import Items from "./Items.vue";
 import Tabs from "./Tabs.vue";
-let id = 0;
+let localTodos = JSON.parse(window.localStorage.getItem("todos")) || [];
+let id = localTodos.length || 0;
 export default {
   components: {
     Items,
@@ -39,7 +40,7 @@ export default {
   },
   data() {
     return {
-      todos: [{ id: 1, content: "吃饭", completed: true }],
+      todos: localTodos,
       filter: "all",
       inputValue: ""
     };
@@ -54,9 +55,11 @@ export default {
         });
         this.inputValue = "";
       }
+      localStorage.setItem("todos", JSON.stringify(this.todos));
     },
     deleteTodo(id) {
       this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1);
+      localStorage.setItem("todos", JSON.stringify(this.todos));
     },
     toggleFilter(state) {
       this.filter = state;
