@@ -1,10 +1,10 @@
 <template>
   <div :class="['todoItem',todo.completed?'completed':'']">
-    <label>
-      <input type="checkbox" class="toggle" v-model="todo.completed">
+    <label class="checkbox">
+      <input class="checkbox" type="checkbox" v-model="todo.completed">
       <span>{{todo.content}}</span>
     </label>
-    <button class="delete" @click="deleteTodo">x</button>
+    <a class="delete" @click="deleteTodo"></a>
   </div>
 </template>
 
@@ -23,9 +23,6 @@ export default {
 
 <style lang="scss" scoped>
 .todoItem {
-  background: white;
-  width: 100%;
-  padding: 6px;
   position: relative;
   input:checked + span {
     text-decoration: line-through;

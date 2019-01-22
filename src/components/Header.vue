@@ -1,20 +1,23 @@
 <template>
-  <h1 class="header">ktodo</h1>
+<div>
+  <section class="hero is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        ktodo
+      </h1>
+      <h2 class="subtitle">
+        别忘了重要的事情
+      </h2>
+    </div>
+  </div>
+</section>
+</div>
 </template>
 
 <script>
-export default {
-  props: {
-    msg: String
-  }
-};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.header {
-  margin: 30px;
-  text-align: center;
-  color: white;
-}
 </style>

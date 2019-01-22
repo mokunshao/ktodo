@@ -2,21 +2,19 @@
   <div id="app">
     <Header/>
     <Todo/>
-    <Footer/>
   </div>
 </template>
 
 <script>
+import 'bulma/css/bulma.css'
 import Header from "./components/Header.vue";
 import Todo from "./components/Todo.vue"
-import Footer from "./components/Footer.jsx";
 
 export default {
   name: "app",
   components: {
     Header,
-    Todo,
-    Footer
+    Todo
   }
 };
 </script>

@@ -1,15 +1,14 @@
 <template>
   <div class="helper">
-    <span class="left">{{unfinishiedLength}} items left</span>
-    <span class="tabs">
-      <span
-        v-for="state in states"
-        :key="state"
-        :class="[state,filter === state?'actived':'']"
-        @click="toggleFilter(state)"
-      >{{state}}</span>
-    </span>
-    <span class="clear" @click="clearCompleted">Clear completed</span>
+    <div>还有{{unfinishiedLength}}个任务未完成</div>
+    <div
+      class="button"
+      v-for="state in states"
+      :key="state.en"
+      :class="[state.en,filter === state.en?'':'is-outlined',state.en==='completed'?'is-success':'is-info']"
+      @click="toggleFilter(state.en)"
+    >{{state.cn}}</div>
+    <div class="button is-danger is-outlined" @click="clearCompleted">清除已完成</div>
   </div>
 </template>
 
@@ -32,12 +31,16 @@ export default {
   },
   data() {
     return {
-      states: ["all", "active", "completed"]
+      states: [
+        { en: "all", cn: "所有" },
+        { en: "active", cn: "未完成" },
+        { en: "completed", cn: "已完成" }
+      ]
     };
   },
   methods: {
     clearCompleted() {
-      this.$emit('clearCompleted')
+      this.$emit("clearCompleted");
     },
     toggleFilter(state) {
       this.$emit("toggleFilter", state);
@@ -48,25 +51,8 @@ export default {
 
 <style lang="scss" scoped>
 .helper {
-  background: white;
-  width: 100%;
-  padding: 6px;
-  text-align: center;
-  .left {
-    float: left;
-  }
-  .clear {
-    float: right;
-  }
-  .tabs {
-    & > * {
-      padding: 0 5px;
-      border: transparent solid;
-    }
-    .actived {
-      border: red solid;
-      border-radius: 5px;
-    }
+  & > * {
+    margin: 10px;
   }
 }
 </style>

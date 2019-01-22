@@ -1,12 +1,18 @@
 <template>
   <section class="todo">
-    <input
-      type="text"
-      class="add-todo"
-      autofocus="autofocus"
-      placeholder="接下来要做什么？"
-      @keyup.enter="addTodo"
-    >
+    <div class="field">
+      <div class="control">
+        <input
+          class="add-todo input is-info is-large is-rounded"
+          type="text"
+          autofocus="autofocus"
+          placeholder="接下来要做什么？"
+          @keyup.enter="addTodo"
+          v-model="inputValue"
+        >
+        <a class="addTodo button is-info is-rounded" @click="addTodo2">添加</a>
+      </div>
+    </div>
     <Items
       v-for="(todo,index) in filteredTodos"
       :key="index"
@@ -34,7 +40,8 @@ export default {
   data() {
     return {
       todos: [{ id: 1, content: "吃饭", completed: true }],
-      filter: "all"
+      filter: "all",
+      inputValue: ""
     };
   },
   methods: {
@@ -46,6 +53,16 @@ export default {
           completed: false
         });
         e.target.value = null;
+      }
+    },
+    addTodo2() {
+      if (this.inputValue) {
+        this.todos.unshift({
+          id: id++,
+          content: this.inputValue.trim(),
+          completed: false
+        });
+        this.inputValue = "";
       }
     },
     deleteTodo(id) {
@@ -71,17 +88,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.todo {
-  width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 0 5px #666;
-  .add-todo {
-    display: inline-block;
-    width: 100%;
-    font-size: 24px;
-    padding: 6px;
-    border: none;
-    border-bottom: 1px solid black;
+.control {
+  position: relative;
+  .addTodo {
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
 }
 </style>
