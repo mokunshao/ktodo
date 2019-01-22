@@ -23,10 +23,16 @@ export default {
 
 <style lang="scss" scoped>
 .todoItem {
+  font-size: 20px;
+  padding: 10px;
   position: relative;
+  input + span {
+    padding-left: 10px;
+  }
   input:checked + span {
     text-decoration: line-through;
     color: #999;
+    padding-left: 10px;
   }
   .delete {
     position: absolute;

@@ -10,7 +10,7 @@
           @keyup.enter="addTodo"
           v-model="inputValue"
         >
-        <a class="addTodo button is-info is-rounded" @click="addTodo2">添加</a>
+        <a class="addTodo button is-info is-rounded" @click="addTodo">添加</a>
       </div>
     </div>
     <Items
@@ -45,17 +45,7 @@ export default {
     };
   },
   methods: {
-    addTodo(e) {
-      if (e.target.value) {
-        this.todos.unshift({
-          id: id++,
-          content: e.target.value.trim(),
-          completed: false
-        });
-        e.target.value = null;
-      }
-    },
-    addTodo2() {
+    addTodo() {
       if (this.inputValue) {
         this.todos.unshift({
           id: id++,
@@ -90,6 +80,7 @@ export default {
 <style lang="scss" scoped>
 .control {
   position: relative;
+  margin: 10px;
   .addTodo {
     position: absolute;
     right: 10px;
